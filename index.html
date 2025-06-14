@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Quán</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+    .item { margin-bottom: 15px; }
+    button { padding: 10px; background: green; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h1>📋 Menu Quán</h1>
+  <div class="item">
+    <label>🍜 Phở bò - 40.000đ</label><br>
+    <input type="number" id="pho" min="0" placeholder="Số lượng">
+  </div>
+  <div class="item">
+    <label>🥤 Trà chanh - 15.000đ</label><br>
+    <input type="number" id="tra" min="0" placeholder="Số lượng">
+  </div>
+  <input type="text" id="ten" placeholder="Tên khách"><br><br>
+  <button onclick="sendOrder()">Gửi đơn</button>
+
+  <script>
+    function sendOrder() {
+      const ten = document.getElementById("ten").value;
+      const pho = document.getElementById("pho").value || 0;
+      const tra = document.getElementById("tra").value || 0;
+
+      const data = {
+        ten: ten,
+        pho: pho,
+        tra: tra
+      };
+
+      // Thay YOUR_SCRIPT_ID bằng link Apps Script sau này
+      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      alert("Đã gửi đơn hàng! Cảm ơn bạn.");
+        </script>
+</body>
+</html>
+		
